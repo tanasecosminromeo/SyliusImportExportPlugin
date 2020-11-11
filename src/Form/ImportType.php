@@ -39,8 +39,7 @@ class ImportType extends AbstractType
             ->add('import-data', FileType::class, [
                 'required' => true,
                 'block_name' => 'import_data',
-            ])
-        ;
+            ]);
     }
 
     private function buildChoices(array $options): array
@@ -54,6 +53,9 @@ class ImportType extends AbstractType
         }
         if ($this->importerRegistry->has(ImporterRegistry::buildServiceName($importerType, 'xlsx'))) {
             $choices['Excel'] = 'xlsx';
+        }
+        if ($this->importerRegistry->has(ImporterRegistry::buildServiceName($importerType, 'price.csv'))) {
+            $choices['Price Update (csv)'] = 'price.csv';
         }
         $choices['JSON'] = 'json';
 
