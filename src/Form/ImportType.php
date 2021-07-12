@@ -57,6 +57,9 @@ class ImportType extends AbstractType
         if ($this->importerRegistry->has(ImporterRegistry::buildServiceName($importerType, 'price.csv'))) {
             $choices['Price Update (csv)'] = 'price.csv';
         }
+        if ($this->importerRegistry->has(ImporterRegistry::buildServiceName($importerType, 'productorder.csv'))) {
+            $choices['Product Taxon (csv)'] = 'productorder.csv';
+        }
         $choices['JSON'] = 'json';
 
         return $choices;
